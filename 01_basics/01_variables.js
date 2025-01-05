@@ -1,7 +1,11 @@
 const accountId = 1;
+
 let accountEmail = "hansraj@gmail.com";
+
 var accountPassword = "12345678";
-accountCity = "Jaipur";
+
+accountCity = "Jaipur";     // Not previously declared
+
 let accountState;
 
 // accountId = 2; // Changing constants not allowed
