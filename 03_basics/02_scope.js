@@ -50,7 +50,7 @@ if (true) {
 
 
 
-// ************************* functions ***********************
+// ************************* intro to mini hoisting ***********************
 
 console.log(addOne(5));
 function addOne(num) {  // Definition
