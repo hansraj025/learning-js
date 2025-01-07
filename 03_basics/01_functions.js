@@ -33,3 +33,88 @@ function loginUserMessage(username = 'John Doe') {
 };
 console.log(loginUserMessage());
 console.log(loginUserMessage(myName));
+
+
+// Taking multiple values using rest operator
+function calculateCartPrice(val1, val2, ...cart){
+    return cart;
+}
+// console.log(calculateCartPrice(0, 0, 100, 200, 300));
+// console.log(calculateCartPrice(0, 0, [100, 200, 300]));
+
+
+// Handling objects
+const user = {
+    name: 'Hansraj',
+    isStudying: true
+};
+
+const player = {
+    username: 'tatadott',
+    isOnline: false
+};
+
+function handleObject(anyObject){
+    if (!anyObject.name && !anyObject.isStudying) { // Executes if they are either undefined or null or false
+        console.log(`Object does not have {name} and {isStudying} keys.`);
+        return;
+    }
+    if (!anyObject.name){   // Execs if it is undefined/null/false
+        console.log('Object does not have {name} key.');
+        return;
+    }
+    if (!anyObject.isStudying){ // Execs if it is undefined/null/fasle
+        console.log('Object does not have {isStudying} key.');
+        return;
+    }
+    console.log(`User ${anyObject.name} ${(anyObject.isStudying)?'is studying.':'is not studying'}`);
+};
+
+// handleObject(user);
+// handleObject(player);
+// handleObject({
+    // name: 'Shinchan Nohara',
+    // isPlaying: true
+    // 
+// });
+// handleObject({
+    // fullname: 'Shinchan Nohara',
+    // isStudying: false
+// });
+// handleObject({
+    // name: 'Hansraj',
+    // isStudying: false
+// });
+// handleObject({
+    // name: null,
+    // isStudying: null
+// })
+// console.log(undefined == false, undefined == 0);
+
+
+function fixedHandleObject(anyObject){
+    if ((anyObject.name == null) && (anyObject.isStudying == null)) { // Executes if they are either undefined or null
+        console.log(`Object does not have {name} and {isStudying} keys.`);
+        return;
+    }
+    if (anyObject.name == null){   // Execs if it is undefined/null
+        console.log('Object does not have {name} key.');
+        return;
+    }
+    if (anyObject.isStudying == null){ // Execs if it is undefined/null
+        console.log('Object does not have {isStudying} key.');
+        return;
+    }
+    console.log(`User ${anyObject.name} ${(anyObject.isStudying)?'is studying.':'is not studying'}`);
+};
+// fixedHandleObject({
+    // name: null,
+    // isStudying: null
+// });
+// fixedHandleObject({
+    // name: 'Shinchan Nohara',
+    // isStudying: false
+// });
+// 
+
+
