@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>three</title>
+</head>
+<body style="background-color: #121212; color: #fff;">
+    
+</body>
+<script>
+    const myDiv = document.createElement('div');
+    myDiv.className = 'main';
+    myDiv.id = Math.round(Math.random()*10 + 1);
+    myDiv.setAttribute('title', 'generated-title');
+    myDiv.style.backgroundColor = 'green';
+    myDiv.style.padding = '12px';
+    myDiv.style.borderRadius = '8px';
+    // myDiv.innerText = 'Chai aur code';
+
+    const text = document.createTextNode('Chai Aur Code');
+    myDiv.appendChild(text);
+
+    document.body.appendChild(myDiv);
+    console.log(myDiv);
+
+</script>
+</html>

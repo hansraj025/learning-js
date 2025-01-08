@@ -5,21 +5,40 @@
     <meta charset="UTF-8">
     <title>Learning DOM</title>
     <style>
-        .bg-lesswhite {
-            background-color: wheat;    
-        }
         .bg-black {
+            background-color: #121212;    
+        }
+        .bg-green {
+            background-color: green;
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+        }
+        .list-item {
             background-color: #121212;
-            color: yellow
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 
-<body class="bg-lesswhite">
-    <div class="bg-black">
-        <h1 class="heading" id="firstHeading">Learining DOM With Hitesh</h1>
+<body class="bg-black">
+    <div class="bg-green">
+        <h1 class="heading" id="firstHeading">Learining DOM With Hitesh <span style="display:none">test text</span></h1>
+        <h2>First Lorem Para</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime sequi corrupti laborum modi neque animi
             inventore error alias qui eum, dolores, quidem ad vero magni in doloremque facilis, magnam est.</p>
+        <h2>Second Lorem Para</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime sequi corrupti laborum modi neque animi
+            inventore error alias qui eum, dolores, quidem ad vero magni in doloremque facilis, magnam est.</p>
+        <h2>My List</h2>
+        <ul>
+            <li class="list-item">List Item</li>
+            <li class="list-item">List Item</li>
+            <li class="list-item">List Item</li>
+        </ul>
+    
     </div>
 
 </body>
