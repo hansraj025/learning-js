@@ -66,3 +66,22 @@ form.addEventListener('submit', function (event) {
 });
 ```
 
+### [Project 3 - Digital Clock (IST) Solution Code](https://stackblitz.com/edit/dom-project-chaiaurcode-yluqtnxh?file=3-DigitalClock%2Fchaiaurcode.js)
+```JavaScript
+const clock = document.querySelector('#clock');
+
+// Method 1
+function refresh() {
+  const date = new Date();
+  clock.innerText = date.toLocaleTimeString(/*'IN'*/);
+  setTimeout(refresh, 1000); // recursive call to refresh
+}
+refresh();
+
+// Method 2
+// setInterval(function () {
+  // const date = new Date();
+  // clock.innerText = date.toLocaleTimeString(/*'IN'*/);
+// }, 1000);
+
+```
