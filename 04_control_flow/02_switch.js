@@ -1,5 +1,5 @@
 
-const day = 1;
+const day = 2;
 switch (day) {
     case 1:
         console.log('Monday');

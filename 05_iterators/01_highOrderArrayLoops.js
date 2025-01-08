@@ -11,11 +11,12 @@ const users = [
     }
 ];
 
+// Accessing objects in a array
 // for (const user of users) {
     // console.log(user);
 // }
 
-
+// Iterating through a string
 const greeting = 'Happy New Year';
 // for (const char of greeting) {
     // console.log(char);
@@ -28,12 +29,20 @@ map.set('FR', 'France');
 map.set('IN', 'India');
 // console.log(map);
 
+// Iterating through key, value pairs of a map
 // for (const [key, value] of map) {
     // console.log(key, '=>', value);
 // };
 
+// map.forEach((val, key) => console.log(key, '=>', val));
+
 
 // ********************* For in loop **********************
+
+for (const [key, value] in map) {
+    console.log(key, '=>' , value);
+}
+
 const myObject = {
     'game1': 'NFS',
     'game2': 'GTA'
