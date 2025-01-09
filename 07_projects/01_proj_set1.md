@@ -191,3 +191,84 @@ function newGame() {
 }
 
 ```
+
+
+### [Project 5 - Show KeyPress Solution Code](https://stackblitz.com/edit/dom-project-chaiaurcode-yluqtnxh?file=5-keyboard%2Fchaiaurcode.js)
+```javascript
+const insert = document.getElementById('insert');
+const p = document.createElement('p');
+insert.appendChild(p);
+
+let inserted = false;
+
+function insertKeyPress(key, code) {
+  p.innerHTML += `[${key}] => [${code}]`;
+  // insert.appendChild(p);
+}
+
+function removeKeyPress() {
+  p.innerHTML = '';
+}
+
+window.addEventListener(
+  'keydown',
+  function (event) {
+    event.preventDefault();
+    if (inserted) {
+      removeKeyPress();
+      console.log(event.key, event.code);
+      insertKeyPress(event.key, event.code);
+    } else {
+      insertKeyPress(event.key);
+      inserted = true;
+    }
+  },
+  false
+);
+
+```
+
+
+### [Project 6 - BackGround Color Changer Solution Code](https://stackblitz.com/edit/dom-project-chaiaurcode-yluqtnxh?file=6-unlimitedColors%2Fchaiaurcode.js)
+```javascript
+const start = document.getElementById('start');
+const stop = document.getElementById('stop');
+
+
+const interval = 1000;
+let intervalId;
+
+const generateRandomColor = function() {
+  const hexCharacters = '0123456789ABCDEF';
+  let colorCode = '#';
+  let randIndex;
+  for (let i = 0; i < 6; i++) {
+    randIndex = Math.floor(Math.random()*16);
+    colorCode += hexCharacters[randIndex];
+  }
+  return colorCode;
+}
+
+const startChangingColor = function() {
+  if (!intervalId) {  // Approach 1, if bgColor changing, do nothing
+    intervalId = setInterval(changeBgColor, interval);
+  }
+  // start.setAttribute('disabled', '');  // Approach 2
+
+  function changeBgColor() {
+    document.body.style.backgroundColor = generateRandomColor();
+  };
+}
+
+
+// Clicking start starts a api call to setInterval
+start.addEventListener('click', startChangingColor);
+
+// Clears the previous event*(setInterval) you registered
+stop.addEventListener('click', function () {
+  clearInterval(intervalId);
+  intervalId = null;  // Approach 1
+  // start.removeAttribute('disabled'); // Approach 2
+});
+
+```
