@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Something JS</title>
+</head>
+
+<body>
+    <h1>Asynchronous JavaScript</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const greetRef = setTimeout(greet, 2000);    // calls greet once after 2 secs
+    const headingChanger = setTimeout(setHeading, 2000);
+
+    // clearTimeout(greetRef);    // tells the web api to clear the previously setTimeout
+
+    document.getElementById('stop').
+    addEventListener('click', function(e) {
+        clearTimeout(greetRef);
+        console.log('call to greet stopped.');
+    });
+
+    function setHeading() {
+        document.querySelector('h1').innerHTML = 'setTimeout calls the handler once after specified time.';
+    }
+
+    function greet() {
+        console.log("Hello, World!");
+    }
+</script>
+
+</html>
