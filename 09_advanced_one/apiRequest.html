@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request and V8 Engine</title>
+</head>
+
+<body>
+    <h1><a href="https://www.youtube.com/watch?v=pDPAcYdSse8&list=PLu71SKxNbfoBuX3f4EOACle2y-tRC5Q37&index=39">API
+            Request and V8 Engine</a></h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Value</th>
+                <th>State</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>0</code></td>
+                <td><code>UNSENT</code></td>
+                <td>Client has been created. <code>open()</code> not called yet.</td>
+            </tr>
+            <tr>
+                <td><code>1</code></td>
+                <td><code>OPENED</code></td>
+                <td><code>open()</code> has been called.</td>
+            </tr>
+            <tr>
+                <td><code>2</code></td>
+                <td><code>HEADERS_RECEIVED</code></td>
+                <td><code>send()</code> has been called, and headers and status are available.</td>
+            </tr>
+            <tr>
+                <td><code>3</code></td>
+                <td><code>LOADING</code></td>
+                <td>Downloading; <code>responseText</code> holds partial data.</td>
+            </tr>
+            <tr>
+                <td><code>4</code></td>
+                <td><code>DONE</code></td>
+                <td>The operation is complete.</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="playground">
+        <button style="padding: 10px; min-width: 200px; margin-bottom: 20px;">LOAD USER CARD</button>
+    </div>
+</body>
+<script>
+    const reqUrl = 'https://api.github.com/users/hansraj025';
+    let githubData;
+
+    function displayCard() {
+        const card = `<div width='200px'>
+                <img width='200px' src=${githubData.avatar_url}>
+                <h3>${githubData.name}</h3>
+                <p>Username: ${githubData.login}</p>
+            </div>`
+
+        document.querySelector('.playground').innerHTML += card;
+    }
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', reqUrl);
+    xhr.send();
+    xhr.onreadystatechange = function () {
+        // console.log(xhr.readyState);
+
+        // If data is successfully received by client, create a card
+        if (xhr.readyState === 4) {
+            githubData = JSON.parse(this.responseText);  // console.log(githubData, typeof githubData);
+            document.querySelector('button').addEventListener('click', displayCard);
+        }
+    }
+
+
+
+
+</script>
+
+</html>
