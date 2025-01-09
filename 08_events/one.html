@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: #212121; color: #fff;">
+    <h2>Image Gallery</h2>
+    <div class="container">
+        <ul class="image-list">
+            <!-- Do not use onclick attribute of html tags to call functions it is not scalable and a bad* programming practice. -->
+            <li><img onclick="alert('You clicked on the cat. But dont use the onclick attribute of html tags to trigger functions. It is not scalable.')"
+                    width="200px" id="kitty"
+                    src="https://images.pexels.com/photos/932261/pexels-photo-932261.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="golden kitty"></li>
+            <li><img width="200px" id="fuji"
+                    src="https://images.pexels.com/photos/347145/pexels-photo-347145.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="Mount Fuji"></li>
+            <li><img width="200px" id="kimono"
+                    src="https://images.pexels.com/photos/2156400/pexels-photo-2156400.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="Couple in Kimono"></li>
+            <li><img width="200px" id="dolls"
+                    src="https://images.pexels.com/photos/4966180/pexels-photo-4966180.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="Russian dolls"></li>
+            <li><img width="200px" id="eagle"
+                    src="https://images.pexels.com/photos/133356/pexels-photo-133356.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="Eagle"></li>
+            <li><a style="color:red; font-size: 50px;" id="google" href="https://google.com">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    // const kitty = document.getElementById('kitty');
+    // const fuji = document.getElementById('fuji');
+    // const kimono = document.getElementById('kimono');
+    // const dolls = document.getElementById('dolls');
+    // const eagle = document.getElementById('eagle');
+    // const ul = document.querySelector('.image-list');
+
+
+    // onclick property - you can use it but it provides less functionality
+    // log it and compare with event
+    // kitty.onclick = function () {
+        // alert(`used onclick property of kitty in js to call this alert. This method is not frequently used cause it provides less functionality`);
+    // };
+
+    // <---------------------------------------------------------------------->
+    // Important properties and methods of events to go over
+    // <---------------------------------------------------------------------->
+    // type, timestamp(*), defaultPrevented(*)
+    // target(*), toElement, srcElement => user event.target instead (*), currentTarget,
+    // clientX(*), clientY(*), screenX(*), screenY(*)
+    // altkey, ctrlkey, shiftkey, keyCode
+    // <---------------------------------------------------------------------->
+
+
+    // Takes three arguments - (eventType, eventHandler, bubblingUpOrInPlace)
+    // fuji.addEventListener('click', function () {
+        // alert('Called using addEventListener. Most frequently used.')
+    // }, false);
+
+
+    // Propogation (Bubbling(false) or Capturing(true))
+    // false => child listener bubbles up => i.e. Kimono is logged first
+    // true => child is captured, parent listener occurs first => i.e. ul is logged first
+    // toggle ul to true and click on dolls and kimono to check, ul will be logged first
+    // ul.addEventListener('click', function () {
+        // console.log("Clicked inside ul.");
+    // }, false );  // false => allows children to bubble up (kimono or dolls > ul, bottom up)
+
+    // kimono.addEventListener('click', function () {
+        // console.log("Clicked on kimono image.");
+    // }, false);  // false => allows it's children but no children
+
+    // dolls.addEventListener('click', function () {
+        // console.log("Clicked on dolls.")
+    // }, true);   // true => topdown, tells it's children to stay down but no children
+
+
+    // Stopping propogation of event all together - only the clicked on elements events occur
+    // parent elements event listener will not be triggered
+    // eagle.addEventListener('click', function (e) {
+        // console.log('Clicked on eagle and stopped propogation. ul will not be logged.');
+        // e.stopPropagation();
+    // }, false)
+
+    // preventing default behaviour on event
+    // document.getElementById('google').addEventListener('click', function (e) {
+        // console.log("Clicked on google.com hyperlink. Prevented redirecting.");
+        // e.preventDefault(); // default for anchor tag is redirecting
+        // e.stopPropagation();
+    // }, true)
+
+
+    const imageList = document.querySelector('.image-list');
+    imageList.addEventListener
+    ('click', function(e){
+            console.log(e);
+            console.log('screenX', e.screenX, 'screenY', e.screenY);
+            console.log('clientX', e.clientX, 'clientY', e.clientY);
+            console.log('timestamp', e.timeStamp);
+            // console.log(e.target);
+            // console.log(e.target.id);
+            // console.log(e.target.parentNode);
+
+            // Event spillover check - we only want to delete images
+            console.log(e.target.tagName);
+            if (e.target.tagName === 'IMG') {
+                let item = e.target.parentNode;
+                item.remove();
+            } 
+    }, false);
+
+</script>
+
+</html>
