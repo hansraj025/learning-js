@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+
+<script>
+    // -- LEXICAL SCOPING
+    // function init() {
+    // let name = "Mozilla"; // name is a local variable created by init
+    // function displayName() {
+    // displayName() is the inner function, that forms a closure
+    // console.log(name); // use variable declared in the parent function
+    // }
+    // displayName();
+    // }
+    // init();
+
+    // function ground() {
+    //     const name = "ground floor";
+
+    //     // console.log(callit);
+    //     function basement1() {
+    //         const callit = "basement 1";
+    //         console.log("B1:", name);
+    //     }
+
+    //     function secretBasement1(){
+    //         const identifier = "secret basement 1";
+    //         console.log("sB1:", name);
+    //         // console.log("sB1:", callit);
+    //     }
+
+    //     basement1()
+    //     secretBasement1();
+
+    // }
+    // ground();
+    // console.log("global:", name)
+
+
+    // -- CLOSURE - lexical scope is returned
+    //    function init() {
+    //         let name = "Mozilla"; 
+    //         function displayName() {
+    //             console.log(name);
+    //         }
+    //         return displayName;
+    //     }
+    //     const myFunc = init();
+    //     myFunc();
+
+</script>
+<script>
+    // -- Practical Example of Closure
+    // document.getElementById("orange").onclick = function(){
+    //     document.body.style.backgroundColor = `orange`;
+    // };
+
+    // document.getElementById("green").onclick = function(){
+    //     document.body.style.backgroundColor = `green`;
+    // };
+
+
+    // ---- Lexical scope is returned instead of just functions reference
+    function clickHandler(color) {
+        return function () { document.body.style.backgroundColor = `${color}` }
+    }
+
+    document.getElementById('orange').onclick = clickHandler("orange");
+    document.getElementById('green').onclick = clickHandler("green");
+
+    // This is officialy the closure of basics of js
+    // Like Michael Phelps Coach Introduce the unknown - just make some projects
+</script>
+
+</html>
